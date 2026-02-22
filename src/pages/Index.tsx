@@ -131,9 +131,8 @@ const Index = () => {
                   onChange={(e) => { setVolume(parseFloat(e.target.value)); setMuted(false); }}
                   className="w-20 md:w-28 h-1 md:h-1.5 volume-slider cursor-pointer"
                   style={{
-                    background: `linear-gradient(to right, hsl(260 100% 65%) 0%, hsl(220 100% 60%) ${(muted ? 0 : volume) * 100}%, hsl(0 0% 12%) ${(muted ? 0 : volume) * 100}%)`,
+                    background: `linear-gradient(90deg, hsl(260 100% 65%), hsl(220 100% 60%) ${(muted ? 0 : volume) * 100}%, hsl(0 0% 50% / 0.3) ${(muted ? 0 : volume) * 100}%)`,
                     borderRadius: '9999px',
-                    boxShadow: `0 0 8px hsl(220 100% 60% / 0.4)`,
                   }}
                 />
               </div>
