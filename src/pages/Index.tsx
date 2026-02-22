@@ -45,7 +45,13 @@ const Index = () => {
   const track = tracks[currentTrack ?? 0];
 
   const handlePlayPause = useCallback(() => {
-    setIsPlaying((prev) => !prev);
+    setIsPlaying((prev) => {
+      if (!prev && playerRef.current && playerRef.current.paused && playerRef.current.currentTime === 0) {
+        // Ensure first track starts on initial play
+        setCurrentTrack((ct) => ct ?? 0);
+      }
+      return !prev;
+    });
   }, []);
 
   const handlePrev = useCallback(() => {
@@ -141,7 +147,7 @@ const Index = () => {
             {/* Progress bar */}
             <div className="mt-5 md:mt-6 flex items-center gap-3 text-xs md:text-sm w-full">
               <span className="w-10 text-right tabular-nums text-neon-purple font-semibold">{formatTime(played)}</span>
-              <div className="flex-1 h-1 md:h-1.5 bg-muted/50 rounded-full cursor-pointer relative" onClick={handleSeek}>
+              <div className="flex-1 progress-bar-track bg-muted/50 rounded-full cursor-pointer relative" onClick={handleSeek}>
                 <div className="h-full progress-neon rounded-full transition-all" style={{ width: `${progress * 100}%` }} />
               </div>
               <span className="w-10 tabular-nums text-muted-foreground">{formatTime(duration)}</span>
