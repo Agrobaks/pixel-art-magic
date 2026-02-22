@@ -130,7 +130,11 @@ const Index = () => {
                   value={muted ? 0 : volume}
                   onChange={(e) => { setVolume(parseFloat(e.target.value)); setMuted(false); }}
                   className="w-20 md:w-28 h-1 md:h-1.5 volume-slider cursor-pointer"
-                  style={{ background: `linear-gradient(to right, hsl(260 100% 65%) ${(muted ? 0 : volume) * 100}%, hsl(0 0% 15%) ${(muted ? 0 : volume) * 100}%)`, borderRadius: '9999px' }}
+                  style={{
+                    background: `linear-gradient(to right, hsl(260 100% 65%) 0%, hsl(220 100% 60%) ${(muted ? 0 : volume) * 100}%, hsl(0 0% 12%) ${(muted ? 0 : volume) * 100}%)`,
+                    borderRadius: '9999px',
+                    boxShadow: `0 0 8px hsl(220 100% 60% / 0.4)`,
+                  }}
                 />
               </div>
             </div>
@@ -171,7 +175,7 @@ const Index = () => {
       </div>
 
       {/* Track List */}
-      <div className="md:max-w-[1200px] md:w-full md:mx-auto max-w-full border border-muted/20 md:neon-border-solid md:rounded-lg md:mt-4 md:mb-8 neon-block-glow">
+      <div className="md:max-w-[1200px] md:w-full md:mx-auto max-w-full border neon-border-solid rounded-lg md:mt-4 md:mb-8 neon-block-glow">
         {/* Table header */}
         <div className="grid grid-cols-[3rem_1fr_5rem] md:grid-cols-[4rem_1fr_1fr_7rem] px-4 md:px-6 py-3 md:py-2 border-b border-muted/20 text-xs font-semibold text-muted-foreground uppercase tracking-widest">
           <span>#</span>
